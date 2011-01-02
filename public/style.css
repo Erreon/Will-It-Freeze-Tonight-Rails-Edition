@@ -27,6 +27,7 @@ width: 320px !important;
 padding: 0 !important;
 margin: 0 !important;
 }
+
 .text_input { 
 	font-family: ubuntu; 
 	height: 30px; 
@@ -61,5 +62,5 @@ margin: 0 !important;
 .go_home { text-align: center; }
 #container { margin-right: auto !important!; margin-left: auto !important!; width: 320px !important!;}
 input[type="text"] { border: 1px solid black !important!; display: block !important!;}
-.find_me { text-align: center; margin-top: 25px; font-size: 12px;}
+.find_me { position: fixed; text-align: center; bottom: 25px; font-size: 12px;}
 }
