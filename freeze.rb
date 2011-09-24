@@ -1,8 +1,8 @@
+require 'rubygems'
 require 'sinatra'
 require 'sinatra/flash'
 require 'google_weather'
 require 'erb'
-
 
 enable :sessions
 
