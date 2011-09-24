@@ -13,16 +13,17 @@ end
 
 post '/weather' do
   begin
-    query = params[:query]
-    weather = GoogleWeather.new(query)
+    place = params[:query]
+    weather = GoogleWeather.new(place)
     today = weather.forecast_conditions[0]
-    @low = today.low.to_i
+    @lowF = today.low.to_i
+    @lowC = (today.low.to_i - 32) * 5/9
 
     rescue NoMethodError
-      if @place.downcase == "hell"
+      if place.downcase == "hell"
         @hell = "Probably not, but if the Cowboys won today... Yes and there is snow too!"
       else
-        flash[:warning] = "Either this place doesn't exist or we don't have access to weather info there.  Try searching for a nearby town or zipcode."
+        flash[:warning] = "Either this place doesn't exist or we don't have access to weather info there.  Try searching for a nearby town or zipcode. Contact me @JasonCarpentier to suggest a place."
         redirect '/'
       end
   end

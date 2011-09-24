@@ -3,14 +3,15 @@
     <%= @hell %><h1>
   <% else %>
     <div class="answer">
-      <% if @low <= 32 %>
+      <% if @lowF <= 32 %>
         Yes
       <% else %>
         No
       <% end %>
     </div>
     <div class="today">today's low is</div>
-    <div class="low"><%= @low %>&#176;F</div>
+    <div class="low"><%= @lowF %>&#176;F</div>
+    <div class="low"><%= @lowC %>&#176;C</div>
   <% end %>
 </div>
 <div class="go_home"><a href="/">Click here to see if it will freeze in another city</a></div>
