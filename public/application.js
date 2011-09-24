@@ -5,7 +5,6 @@ $(function() {
 				url: "http://ws.geonames.org/searchJSON",
 				dataType: "jsonp",
 				data: {
-					country: "US",
 					featureClass: "P",
 					style: "full",
 					maxRows: 12,
