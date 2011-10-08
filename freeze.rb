@@ -1,7 +1,7 @@
 require 'rubygems'
 require 'sinatra'
 require 'sinatra/flash'
-require 'google_weather'
+require 'barometer'
 require 'erb'
 
 enable :sessions
@@ -14,10 +14,12 @@ end
 post '/weather' do
   begin
     place = params[:query]
-    weather = GoogleWeather.new(place)
-    today = weather.forecast_conditions[0]
-    @lowF = today.low.to_i
-    @lowC = (today.low.to_i - 32) * 5/9
+    barometer = Barometer.new(place)
+    weather = barometer.measure
+    @today_low_f = weather.today.low.to_i
+    @today_low_c = (@today_low_f - 32) * 5/9
+    @tomorrow_low_f = weather.tomorrow.low.to_i
+    @tomorrow_low_c = (@tomorrow_low_f - 32) * 5/9
 
     rescue NoMethodError
       if place.downcase == "hell"
