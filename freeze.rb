@@ -9,9 +9,9 @@ enable :sessions
 helpers do
   def freezing?(temp)
     if temp < 32
-      "Yes"
+      true
     else
-      "No"
+      false
     end
   end
 end
@@ -30,6 +30,7 @@ post '/weather' do
     @today_low_c = (@today_low_f - 32) * 5/9
     @tomorrow_low_f = weather.tomorrow.low.to_i
     @tomorrow_low_c = (@tomorrow_low_f - 32) * 5/9
+    @location = weather.default.location.city
 
     rescue ArgumentError
       if place.downcase == "hell"

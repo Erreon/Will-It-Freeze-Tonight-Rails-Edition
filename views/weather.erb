@@ -3,12 +3,22 @@
     <%= @hell %><h1>
   <% else %>
     <div class="answer">
-      <%= freezing?(@today_low_f) %>
+      <% if freezing?(@today_low_f) %>
+        Yes
+      <% else %>
+        No
+      <% end %>
     </div>
     <div class="today">today's low is</div>
     <div class="low"><%= @today_low_f %>&#176;F / <%= @today_low_c %>&#176;C</div>
     <br /><div class="today">tomorrow's low is</div>
     <div class="low"><%= @tomorrow_low_f %>&#176;F / <%= @tomorrow_low_c %>&#176;C</div> 
+  <% end %>
+  <br />
+  <% if freezing?(@today_low_f) %>
+    <a href="https://twitter.com/share" class="twitter-share-button" data-count="none" data-text="Yes, it will freeze tonight in <%= @location %> the low is <%= @today_low_f %>. Check out: " data-count="vertical" data-via="JasonCarpentier">Tweet</a><script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>
+  <% else %>
+    <a href="https://twitter.com/share" class="twitter-share-button" data-count="none" data-text="No, it won't freeze tonight in <%= @location %> the low is <%= @today_low_f %>. Check out: " data-count="vertical" data-via="JasonCarpentier">Tweet</a><script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>
   <% end %>
 </div>
 <div class="go_home"><a href="/">Click here to see if it will freeze in another city</a></div><div class="clear"></div>
