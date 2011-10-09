@@ -8,7 +8,7 @@ enable :sessions
 
 helpers do
   def freezing?(temp)
-    if temp < 32
+    if temp <= 32
       true
     else
       false
