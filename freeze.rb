@@ -6,6 +6,16 @@ require 'erb'
 
 enable :sessions
 
+helpers do
+  def freezing?(temp)
+    if temp < 32
+      "Yes"
+    else
+      "No"
+    end
+  end
+end
+
 get '/' do
   @title = "WillItFreezeTonight.com"
   erb :index
@@ -21,7 +31,7 @@ post '/weather' do
     @tomorrow_low_f = weather.tomorrow.low.to_i
     @tomorrow_low_c = (@tomorrow_low_f - 32) * 5/9
 
-    rescue NoMethodError
+    rescue ArgumentError
       if place.downcase == "hell"
         @hell = "Probably not, but if the Cowboys won today... Yes and there is snow too!"
       else

@@ -3,11 +3,7 @@
     <%= @hell %><h1>
   <% else %>
     <div class="answer">
-      <% if @today_low_f <= 32 %>
-        Yes
-      <% else %>
-        No
-      <% end %>
+      <%= freezing?(@today_low_f) %>
     </div>
     <div class="today">today's low is</div>
     <div class="low"><%= @today_low_f %>&#176;F / <%= @today_low_c %>&#176;C</div>
