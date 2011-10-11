@@ -2,13 +2,12 @@
 .container { padding-top: 40px; }
 body { font-family: ubuntu; }
 .center { text-align: center }
-.will_freeze { font-size: 40px; font-family: ubuntu; padding-top: 10px;}
-.text_input {font-family: ubuntu; font-size: 60px; height: 30px; width: 250px; }
+.will_freeze { font-size: 40px; font-family: ubuntu;}
+.text_input {font-family: ubuntu;}
 h1 { font-size: 60px; font-family: ubuntu;}
-.answer { font-size: 120px; font-family: ubuntu; font-weight: bold;}
-
-.today { font-size: 45px; font-family: ubuntu;}
-.low { font-size: 65px;  font-weight: bold;}
+.answer { font-size: 120px; font-family: ubuntu; font-weight: bold; line-height: 120px; }
+.today { font-size: 45px; font-family: ubuntu; line-height: 45px; }
+.low { font-size: 65px;  font-weight: bold; line-height: 65px;}
 .go_home { text-align: right;}
 .fb_like { margin-top: 20px; text-align: right;}
 .find_me { text-align: center; margin-top: 50px; font-size: 12px;}
