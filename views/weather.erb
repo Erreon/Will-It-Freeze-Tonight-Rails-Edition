@@ -18,11 +18,10 @@
   <% end %>
   <br />
   <% if freezing?(@today_low_f) or freezing?(@tomorrow_low_f) %>
-    <a href="https://twitter.com/share" class="twitter-share-button" data-count="none" data-text="Yes, it will freeze tonight in <%= @location %> the low is <%= @today_low_f %>. Check out: " data-count="vertical" data-via="JasonCarpentier">Tweet</a><script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>
+    <a href="https://twitter.com/share" class="twitter-share-button" data-count="none" data-text="Yes, it will freeze tonight in <%= @location %> the low is <%= @today_low_f %>. <%= @site %>" data-count="vertical" data-via="JasonCarpentier">Tweet</a><script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>
   <% else %>
     <a href="https://twitter.com/share" class="twitter-share-button" data-count="none" data-text="No, it won't freeze tonight in <%= @location %> the low is <%= @today_low_f %>. <%= @site %>" data-count="vertical" data-related="JasonCarpentier" data-url=none>Tweet</a><script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>
   <% end %>
 </div>
-<%= @site %>
 <div class="span-16 go_home"><a href="/">Click here to see if it will freeze in another city</a></div><div class="clear"></div>
 </section>
