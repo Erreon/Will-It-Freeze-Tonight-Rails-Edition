@@ -28,7 +28,10 @@ get '/' do
 end
 
 post '/mobile' do
-  print 'test'
+  @twilio_client.account.sms.create(
+    :from => '+12106512991',
+    :to => '+12107751266',
+    :body => 'Got it!')
 end
 
 get '/:place' do
