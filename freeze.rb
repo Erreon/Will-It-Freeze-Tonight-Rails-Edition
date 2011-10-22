@@ -3,9 +3,13 @@ require 'sinatra'
 require 'sinatra/flash'
 require 'barometer'
 require 'erb'
+require 'twilio-ruby'
 require 'uri'
 
 enable :sessions
+API_VERSION = '2010-04-01'
+account_sid = 'ACb1ab811f67f385bc1e663b1d70f18b9a'
+auth_token = '10e2c8613d42b83211b4a91eff98f45e'
 
 helpers do
   def check_weather(place)
@@ -30,11 +34,32 @@ helpers do
       false
     end
   end
+
+  def get_weather(place)
+    barometer = Barometer.new(place)
+    weather = barometer.measure
+    @today_low_f = weather.today.low.to_i
+    @tomorrow_low_f = weather.today.low.to_i
+    @location = weather.default.location.city
+
+    if freezing?(@today_low_f)
+      @msg = "Yes, Today's low in #{@location} is: #{@today_low_f}F and tommorow's low is: #{@tomorrow_low_f}F"
+    else
+      @msg = "No, Today's low in #{@location} is: #{@today_low_f}F and Tomorrow's low is: #{@tomorrow_low_f}F"
+    end
+  end
+
 end
 
 get '/' do
   @title = "WillItFreezeTonight.com"
   erb :index
+end
+
+post '/mobile' do
+  @twilio_client = Twilio::REST::Client.new(account_sid, auth_token)
+  get_weather(params['Body'])
+  @twilio_client.account.sms.messages.create(:from => '+12106512991', :to => params['From'],:body => @msg)
 end
 
 get '/:place' do
