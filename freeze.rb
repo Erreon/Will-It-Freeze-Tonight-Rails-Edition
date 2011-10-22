@@ -34,8 +34,8 @@ end
 
 post '/mobile' do
   @twilio_client = Twilio::REST::Client.new(account_sid, auth_token)
-  get_weather(params['Body'])
-  @twilio_client.account.sms.messages.create(:from => '+12106512991', :to => '+12107751266',:body => 'Got it!')
+  @test = get_weather(params['Body'])
+  @twilio_client.account.sms.messages.create(:from => '+12106512991', :to => '+12107751266',:body => '#{@test}')
 end
 
 get '/:place' do
