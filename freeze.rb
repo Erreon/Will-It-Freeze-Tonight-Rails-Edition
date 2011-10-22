@@ -26,7 +26,7 @@ helpers do
     @today_low_f = weather.today.low.to_i
     @tomorrow_low_f = weather.today.low.to_i
     @location = weather.default.location.city
-    if freeze?(@today_low)
+    if freeze?(@today_low_f)
       @msg = "Yes, Today's low in #{@location} is: #{@today_low_f}F and tommorow's low is: #{@tomoorow_low_f}F"
     else
       @msg = "No, Today's low in #{@location} is: #{@today_low_f}F and Tomorrow's low is: #{@tomorrow_low_f}F"
