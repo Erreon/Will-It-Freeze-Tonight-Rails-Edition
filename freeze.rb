@@ -10,7 +10,6 @@ enable :sessions
 API_VERSION = '2010-04-01'
 account_sid = 'ACb1ab811f67f385bc1e663b1d70f18b9a'
 auth_token = '10e2c8613d42b83211b4a91eff98f45e'
-@twilio_client = Twilio::REST::Client.new(account_sid, auth_token)
 
 helpers do
   def freezing?(temp)
@@ -28,8 +27,8 @@ get '/' do
 end
 
 post '/mobile' do
- @twilio_client.account.sms.messages.create(:from => '+12106512991', :to => '+12107751266',:body => 'Got it!')
- redirect('/')
+  @twilio_client = Twilio::REST::Client.new(account_sid, auth_token)
+  @twilio_client.account.sms.messages.create(:from => '+12106512991', :to => '+12107751266',:body => 'Got it!')
 end
 
 get '/:place' do
