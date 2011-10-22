@@ -3,8 +3,13 @@ require 'sinatra'
 require 'sinatra/flash'
 require 'barometer'
 require 'erb'
+require 'twilio-ruby'
 
 enable :sessions
+
+@account_sid = 'ACb1ab811f67f385bc1e663b1d70f18b9a'
+@auth_token = '10e2c8613d42b83211b4a91eff98f45e'
+@twilio_client = Twilio::REST::Client.new(@account_sid, @auth_token)
 
 helpers do
   def freezing?(temp)
@@ -19,6 +24,10 @@ end
 get '/' do
   @title = "WillItFreezeTonight.com"
   erb :index
+end
+
+post '/mobile' do
+  print 'test'
 end
 
 post '/weather' do
