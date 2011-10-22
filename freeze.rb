@@ -23,9 +23,9 @@ helpers do
   def get_weather(place)
     barometer = Barometer.new(place)
     weather = barometer.measure
-    today_low_f = weather.today.low.to_i
-    tomorrow_low_f = weather.today.low.to_i
-    location = weather.default.location.city
+    @today_low_f = weather.today.low.to_i
+    @tomorrow_low_f = weather.today.low.to_i
+    @location = weather.default.location.city
   end
 
 end
@@ -37,11 +37,11 @@ end
 
 post '/mobile' do
   @twilio_client = Twilio::REST::Client.new(account_sid, auth_token)
-  @test = get_weather(params['Body'])
-  if freezing?
+  get_weather(params['Body'])
+  if freezing?(@today_low_f)
 
   else
-    msg = "No, Today's low in #{@test.location} is: #{@test.today_low_f}F and Tomorrow's low is: #{@test.tomorrow_low_f}F"
+    msg = "No, Today's low in #{@location} is: #{@today_low_f}F and Tomorrow's low is: #{@tomorrow_low_f}F"
   end
 
   @twilio_client.account.sms.messages.create(:from => '+12106512991', :to => params['From'],:body => @msg)
