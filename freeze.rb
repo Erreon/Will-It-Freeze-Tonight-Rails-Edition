@@ -8,9 +8,9 @@ require 'uri'
 
 enable :sessions
 
-@account_sid = 'ACb1ab811f67f385bc1e663b1d70f18b9a'
-@auth_token = '10e2c8613d42b83211b4a91eff98f45e'
-@twilio_client = Twilio::REST::Client.new(@account_sid, @auth_token)
+account_sid = 'ACb1ab811f67f385bc1e663b1d70f18b9a'
+auth_token = '10e2c8613d42b83211b4a91eff98f45e'
+@twilio_client = Twilio::REST::Client.new(account_sid, auth_token)
 
 helpers do
   def freezing?(temp)
