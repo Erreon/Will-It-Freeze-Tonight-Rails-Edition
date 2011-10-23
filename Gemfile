@@ -10,7 +10,7 @@ gem 'barometer'
 gem 'twilio-ruby'
 
 group :production do
-  gem 'therubyracer-heroku'
+  gem 'therubyracer', '~> 0.9.3.beta1'
 end
 
 # Gems used only for assets and not required
