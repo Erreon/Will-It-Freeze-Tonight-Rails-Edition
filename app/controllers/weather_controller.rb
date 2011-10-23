@@ -3,7 +3,7 @@ class WeatherController < ApplicationController
     get_weather(params[:place])
     freezing?(@low_today, @low_tomorrow)
   rescue ArgumentError
-    redirect_to :root
+    redirect_to :root, :alert => "The place you're looking for doesn't seem to exist. If you think that's a bug contact @JasonCarpentier"
   end
   
   private
@@ -12,7 +12,8 @@ class WeatherController < ApplicationController
       weather = Barometer.new(place).measure
       @low_today = weather.today.low.to_i
       @low_tomorrow = weather.tomorrow.low.to_i
-      @location = weather.default.location.city + ', ' + weather.default.location.state_code
+      @location_city = weather.default.location.city
+      @location_state_code = weather.default.location.state_code
     end
     
     def freezing?(today_temp, tomorrow_temp)

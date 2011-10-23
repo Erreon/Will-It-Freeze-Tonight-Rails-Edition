@@ -10,6 +10,9 @@
 </head>
 <body>
 <div class="container">
+  <% flash.each do |name, msg| %>
+    <%= content_tag :div, msg, :id => "flash_#{name}", :class => 'alert-message center' %>
+  <% end %>
   <%= yield %>
 </div>
 	  <script type="text/javascript">
