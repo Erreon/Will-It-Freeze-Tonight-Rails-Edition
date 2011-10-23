@@ -6,5 +6,31 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery-ui
+//= require modernizr.custom.20589
 //= require_tree .
 
+if (Modernizr.geolocation) {
+	$(document).ready(function(){
+      $("#locationButton").html("<button id=\"findLocation\">Use your location</button>");
+	  $("#findLocation").click(init_geolocation);
+	});
+
+	function init_geolocation(){
+		navigator.geolocation.getCurrentPosition(handle_geolocation_query);
+	}
+
+	function handle_geolocation_query(position){
+		$.ajax({
+		  url: "http://ws.geonames.org/findNearbyPostalCodesJSON",
+		  dataType: "json",
+		  data: {
+			lat: position.coords.latitude,
+			lng: position.coords.longitude
+		},
+		success: function( data ) {
+			$("input#place").val(data.postalCodes[0].placeName + ', ' + data.postalCodes[0].adminName1 + ', ' + data.postalCodes[0].postalCode );
+		}	
+		});
+	}
+}

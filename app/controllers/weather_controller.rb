@@ -2,6 +2,8 @@ class WeatherController < ApplicationController
   def show
     get_weather(params[:place])
     freezing?(@low_today, @low_tomorrow)
+  rescue ArgumentError
+    redirect_to :root
   end
   
   private
@@ -10,6 +12,7 @@ class WeatherController < ApplicationController
       weather = Barometer.new(place).measure
       @low_today = weather.today.low.to_i
       @low_tomorrow = weather.tomorrow.low.to_i
+      @location = weather.default.location.city + ', ' + weather.default.location.state_code
     end
     
     def freezing?(today_temp, tomorrow_temp)
