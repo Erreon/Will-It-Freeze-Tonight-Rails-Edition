@@ -3,6 +3,6 @@
 <div class="stuff">today's low is<br /></div>
   <div class="temperature"><%= @low_today %> F / <%= to_celsius(@low_today) %>C</div>
 <div class="stuff">tomorrow's low is</div>
-  <div class="temperature"><%= @low_tommorrow %> F / <%= to_celsius(@low_tomorrow) %>C</div>
+  <div class="temperature"><%= @low_tomorrow %> F / <%= to_celsius(@low_tomorrow) %>C</div>
 </div>
 
