@@ -1,4 +1,7 @@
 Freezetonight::Application.routes.draw do
+
+  match 'weather/:place' => 'weather#show'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
