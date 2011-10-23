@@ -9,9 +9,7 @@ gem 'sqlite3'
 gem 'barometer'
 gem 'twilio-ruby'
 
-group :production do
-  gem 'therubyracer', '~> 0.9.3.beta1'
-end
+gem 'therubyracer', :group => :production
 
 # Gems used only for assets and not required
 # in production environments by default.
