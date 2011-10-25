@@ -6,6 +6,8 @@ Jason Carpentier - 10/24/11<br><br>
 PS. If you have any suggestions or bug reports talk to me on twitter: <a href="https://twitter.com/#!/jasoncarpentier">@JasonCarpentier</a>  I'm usually nearby to reply.
 </p>
 
+
+<h3>Price for Subscription is $2.00 per month</h3>
 <%= form_for @user, :url => { :action => 'subscribe' }, :html => {:class=> 'new_subscription_form', :id => 'new_subscription_form' } do |f| %>
   <% if @user.errors.any? %>
     <div class="error_messages">
