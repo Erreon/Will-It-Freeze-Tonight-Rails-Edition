@@ -39,5 +39,6 @@ Welcome earthling <%= current_user.username %>
     </div>
   </div>
   <%= f.hidden_field :stripe_card_token %>
+  <%= f.hidden_field :username %>
   <div class="actions"><%= f.submit "Subscribe", :class => "btn" %></div>
 <% end %>

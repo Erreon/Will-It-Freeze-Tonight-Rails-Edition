@@ -40,5 +40,8 @@ Welcome earthling <%= current_user.username %>
   </div>
   <%= f.hidden_field :stripe_card_token %>
   <%= f.hidden_field :username %>
+  <div id="stripe_error">
+    <noscript>JavaScript is not enabled and is required for this form. First enable it in your web browser settings.</noscript>
+  </div>
   <div class="actions"><%= f.submit "Subscribe", :class => "btn" %></div>
 <% end %>
