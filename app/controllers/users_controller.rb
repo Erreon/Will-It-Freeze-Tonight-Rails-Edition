@@ -32,12 +32,12 @@ class UsersController < ApplicationController
   end
   
   def new_subscription
-    @user = User.find(params[:id])
+    @user = current_user
     render :new_subscription
   end
   
   def subscribe
-    @user = User.find(params[:id])
+    @user = current_user
     
     respond_to do |format|
       if @user.save_with_payment(params[:user])

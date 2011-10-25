@@ -2,8 +2,8 @@ Freezetonight::Application.routes.draw do
   
   match 'weather' => 'weather#show'
   root to: "home#index"
-  put "subscribe/:id" => "users#subscribe", :as => "subscribe"
-  get "new_subscription/:id" => "users#new_subscription", :as => "new_subscription"
+  put "subscribe" => "users#subscribe", :as => "subscribe"
+  get "new_subscription" => "users#new_subscription", :as => "new_subscription"
   get "logout" => "sessions#destroy", :as => "logout"
   get "login" => "sessions#new", :as => "login"
   get "signup" => "users#new", :as => "signup"
