@@ -52,7 +52,7 @@ class UsersController < ApplicationController
 
   def resubscribe
     @user = current_user
-    custumer = Stripe::Customer.retrieve(@user.stripe_customer_token)
+    customer = Stripe::Customer.retrieve(@user.stripe_customer_token)
     customer.update_subscription(:plan => 1)
     @user.subscription = 1
 

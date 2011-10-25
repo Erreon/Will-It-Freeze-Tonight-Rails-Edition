@@ -15,13 +15,16 @@
     <% if current_user %>
       Logged in as <%= current_user.username %>
       <%= link_to "Log out", logout_path %>
-      <% if current_user.subscription == 0 %>
-        <% if current_user.stripe_customer_token != 0 %>
-          <%= link_to "Resubscribe", resubscribe_path %>
-        <% end %>
-        <%= link_to "Subscribe", new_subscription_path(current_user.id) %>
-      <% else %>
-        <%= link_to "Unsubscribe", unsubscribe_path %>
+      <% if current_user.stripe_customer_token == 0 && current_user.subscription == 0 %>
+          <%= link_to "Subscribe", new_subscription_path(current_user.id), :class => "label new"  %>
+      <% end %>
+      
+      <% if current_user.stripe_customer_token != 0 && current_user.subscription == 0 %>
+        <%= link_to "Resubscribe", resubscribe_path, :class => "label success" %>
+      <% end %>
+
+      <% if current_user.stripe_customer_token != 0 && current_user.subscription != 0 %> 
+        <%= link_to "Unsubscribe", unsubscribe_path, :class => "label" %>
       <% end %>
     <% else %>
       <%= link_to "Sign up", signup_path %> or
