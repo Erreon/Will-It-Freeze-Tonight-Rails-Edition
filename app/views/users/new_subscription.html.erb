@@ -49,5 +49,6 @@ PS. If you have any suggestions or bug reports talk to me on twitter: <a href="h
   <div id="stripe_error">
     <noscript>JavaScript is not enabled and is required for this form. First enable it in your web browser settings.</noscript>
   </div>
-  <div class="actions"><%= f.submit "Subscribe", :class => "btn" %></div>
+  <div class="actions"><%= f.submit "Subscribe", :class => "btn primary large" %> <%= link_to "Nevermind", root_url, :class => 'btn small danger' %></div>
+  
 <% end %>
