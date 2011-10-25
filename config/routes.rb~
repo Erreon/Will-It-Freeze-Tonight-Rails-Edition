@@ -1,7 +1,15 @@
 Freezetonight::Application.routes.draw do
-
+  
   match 'weather' => 'weather#show'
   root to: "home#index"
+  put "subscribe/:id" => "users#subscribe", :as => "subscribe"
+  get "new_subscription/:id" => "users#new_subscription", :as => "new_subscription"
+  get "logout" => "sessions#destroy", :as => "logout"
+  get "login" => "sessions#new", :as => "login"
+  get "signup" => "users#new", :as => "signup"
+  get "unsubscribe" => "users#unsubscribe", :as => "unsubscribe"
+  resources :users
+  resources :sessions
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

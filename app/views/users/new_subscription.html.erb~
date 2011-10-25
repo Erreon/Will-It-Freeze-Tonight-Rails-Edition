@@ -1,0 +1,43 @@
+<p>
+Welcome earthling <%= current_user.username %>
+</p>
+
+<%= form_for @user, :url => { :action => 'subscribe' }, :html => {:class=> 'new_subscription_form', :id => 'new_subscription_form' } do |f| %>
+  <% if @user.errors.any? %>
+    <div class="error_messages">
+      <h2>Form is invalid</h2>
+      <ul>
+        <% for message in @user.errors.full_messages %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %> 
+  <div class="clearfix">
+    <%= f.label :subscription %>
+    <div class="input">
+      <%= f.select(:subscription, [['Subscriber', 1]]) %>
+    </div>
+  </div>
+  <div class="clearfix">
+    <%= label_tag :card_number, "Credit Card Number" %>
+    <div class="input">
+      <%= text_field_tag :card_number, nil, name: nil %>
+    </div>
+  </div>
+  <div class="clearfix">
+    <%= label_tag :card_code, "Security Code on Card (CVV)" %>
+    <div class="input">
+      <%= text_field_tag :card_code, nil, name: nil %>
+    </div>
+  </div>
+  <div class="clearfix">
+    <%= label_tag :card_month, "Card Expiration" %>
+    <div class="input">
+      <%= select_month nil, {add_month_numbers: true}, {name:nil, id: "card_month"} %>
+      <%= select_year nil, {start_year: Date.today.year, end_year: Date.today.year+15}, {name: nil, id: "card_year"} %>
+    </div>
+  </div>
+  <%= f.hidden_field :stripe_card_token %>
+  <div class="actions"><%= f.submit "Subscribe", :class => "btn" %></div>
+<% end %>

@@ -6,3 +6,5 @@
  *= require bootstrap
  *= require_tree .
 */
+
+.nav_bar { text-align: right; }

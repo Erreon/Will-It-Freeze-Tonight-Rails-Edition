@@ -6,7 +6,6 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require jquery-ui
 //= require modernizr.custom.20589
 //= require_tree .
 
