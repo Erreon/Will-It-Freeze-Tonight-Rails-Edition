@@ -10,12 +10,15 @@ gem 'twilio-ruby'
 gem 'sorcery'
 gem 'therubyracer', :group => :production
 gem 'stripe'
+gem 'thin'
 
 group :production do
   gem 'pg'
 end
+
 group :development, :test do
   gem 'sqlite3'
+  gem 'pry'
 end
 
 # Gems used only for assets and not required
@@ -40,10 +43,6 @@ gem 'jquery-rails'
 
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
-
-group :development do
-  gem 'pry'
-end
 
 group :test do
   # Pretty printed test output

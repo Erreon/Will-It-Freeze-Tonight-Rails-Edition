@@ -6,6 +6,12 @@ class WeatherController < ApplicationController
     redirect_to :root, :alert => "The place you're looking for doesn't seem to exist. If you think that's a bug contact @JasonCarpentier"
   end
   
+  def mobile
+    @twilio_client = Twilio::REST::Client.new(twilio_account_sid, twilio_auth_token)
+    get_weather(params['Body'])
+    @twilio_client.account.sms.messages.create(:from => '+12106512991', :to => params['From'],:body => @msg)
+  end
+
   private
   
     def get_weather(place)

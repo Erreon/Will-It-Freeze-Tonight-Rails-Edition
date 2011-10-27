@@ -6,6 +6,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery.maskedinput-1.3
 //= require modernizr.custom.20589
 //= require_tree .
 
@@ -32,4 +33,4 @@ if (Modernizr.geolocation) {
 		}	
 		});
 	}
-}
+} 

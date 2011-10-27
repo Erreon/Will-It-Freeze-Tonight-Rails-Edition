@@ -27,4 +27,6 @@ subscription =
     else
       $('#stripe_error').text(response.error.message)
       $('input[type=submit]').attr('disabled', false )
-      
+
+jQuery ($) ->
+  $('input[id="user_phone_number"]').mask("(999) 999-9999")

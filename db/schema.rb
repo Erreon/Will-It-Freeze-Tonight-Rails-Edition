@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111024002835) do
+ActiveRecord::Schema.define(:version => 20111026184951) do
 
   create_table "users", :force => true do |t|
     t.string   "username",                                    :null => false
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(:version => 20111024002835) do
     t.datetime "remember_me_token_expires_at"
     t.integer  "subscription",                 :default => 0
     t.string   "stripe_customer_token"
+    t.string   "phone_number"
   end
 
   add_index "users", ["remember_me_token"], :name => "index_users_on_remember_me_token"

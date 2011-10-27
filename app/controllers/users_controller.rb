@@ -19,10 +19,12 @@ class UsersController < ApplicationController
   
   def update
     @user = User.find(params[:id])
-    
+    if params[:phone_number]
+      @user.phone_number = params[:phone_number].gsub(/\D/, "")
+    end
     respond_to do |format|
       if @user.update_attributes(params[:user])
-        format.html { redirect_back_or_to root_url, notice: 'User account was successfully updated.' }
+        format.html { render action: "edit", notice: 'User account was successfully updated.' }
         format.json { head :ok }
       else
         format.html { render action: "edit" }
@@ -71,5 +73,5 @@ class UsersController < ApplicationController
       redirect_to root_url, notice: 'Unsubscribed.  I hope you come back again.'
     end
   end
-  
+
 end

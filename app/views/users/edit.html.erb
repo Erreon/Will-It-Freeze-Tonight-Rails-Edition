@@ -9,7 +9,36 @@
       </ul>
     </div>
   <% end %> 
-
+  <div class="clearfix">
+    <%= f.label :username %>
+    <div class="input">
+      <%= f.text_field :username %>
+    </div>
+  </div>
+  <div class="clearfix">
+    <%= f.label :email %>
+    <div class="input">
+      <%= f.text_field :email, :class => "large" %>
+    </div>
+  </div>
+  <div class="clearfix">
+    <%= f.label :phone_number %>
+    <div class="input">
+      <%= f.text_field :phone_number, :class => "large" %>
+    </div>
+  </div>
+  <div class="clearfix">
+    <%= f.label :password %>
+    <div class="input">
+      <%= f.password_field :password %>
+    </div>
+  </div>
+  <div class="clearfix">
+    <%= f.label :password_confirmation %>
+    <div class="input">
+      <%= f.password_field :password_confirmation %>
+    </div>
+  </div>
   
-  <div class="actions"><%= f.submit "Subscribe", :class => "btn" %></div>
+  <div class="actions"><%= f.submit "Save", :class => "btn" %></div>
 <% end %>

@@ -1,8 +1,6 @@
 class User < ActiveRecord::Base
   authenticates_with_sorcery!
-  
-  attr_accessible :username, :email, :password, :password_confirmation, :subscription
-  
+  attr_accessible :username, :email, :phone_number, :password, :password_confirmation, :subscription
   attr_accessor :stripe_card_token 
   
   validates_confirmation_of :password
@@ -13,7 +11,6 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :email
   
   def save_with_payment(params)
-    print params 
     if valid?
       customer = Stripe::Customer.create(description: params['username'], plan: params['subscription'], card: params['stripe_card_token'])
       self.stripe_customer_token = customer.id
