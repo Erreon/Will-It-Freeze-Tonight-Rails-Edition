@@ -12,10 +12,6 @@ require "rails/all"
 # For errors like ActiveRecord::RecordNotFound
 #require "active_record"
 
-
-twilio_account_sid = 'ACb1ab811f67f385bc1e663b1d70f18b9a'
-twilio_auth_token = '10e2c8613d42b83211b4a91eff98f45e'
-
 if defined?(Bundler)
   # If you precompile assets before deploying to production, use this line
   Bundler.require(*Rails.groups(:assets => %w(development test)))
