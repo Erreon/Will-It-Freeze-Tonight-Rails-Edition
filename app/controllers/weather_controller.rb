@@ -9,6 +9,7 @@ class WeatherController < ApplicationController
   def mobile
     @twilio_client = Twilio::REST::Client.new(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN)
     get_weather(params['Body'])
+    @msg = "Testing"
     @twilio_client.account.sms.messages.create(:from => '+12106512991', :to => params['From'],:body => @msg)
   end
 
@@ -20,6 +21,7 @@ class WeatherController < ApplicationController
       @low_tomorrow = weather.tomorrow.low.to_i
       @location_city = weather.default.location.city
       @location_state_code = weather.default.location.state_code
+
     end
     
     def freezing?(today_temp, tomorrow_temp)

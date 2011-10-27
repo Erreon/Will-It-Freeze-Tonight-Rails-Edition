@@ -9,8 +9,8 @@ Freezetonight::Application.routes.draw do
   get "signup" => "users#new", :as => "signup"
   get "unsubscribe" => "users#unsubscribe", :as => "unsubscribe"
   get "resubscribe" => "users#resubscribe", :as => "resubscribe"
-  get "mobile" => "weather#mobile", :as => "mobile"
-  
+  post "mobile" => "weather#mobile", :as => "mobile"
+
   resources :users
   resources :sessions
 
