@@ -14,6 +14,7 @@ class WeatherController < ApplicationController
     else
       @msg = "No, the low today in #{@location_city} is #{@low_today}F and the low tomorrow is #{@low_tomorrow}F"
     end
+    print params['From']
     @twilio_client.account.sms.messages.create(:from => '+12106512991', :to => params['From'],:body => @msg)
   end
 
@@ -25,7 +26,6 @@ class WeatherController < ApplicationController
       @low_tomorrow = weather.tomorrow.low.to_i
       @location_city = weather.default.location.city
       @location_state_code = weather.default.location.state_code
-
     end
     
     def freezing?(today_temp, tomorrow_temp)
