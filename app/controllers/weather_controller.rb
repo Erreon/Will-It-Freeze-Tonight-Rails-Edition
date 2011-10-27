@@ -10,9 +10,9 @@ class WeatherController < ApplicationController
     @twilio_client = Twilio::REST::Client.new(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN)
     get_weather(params['Body'])
     if freezing?(@low_today, @low_tomorrow)
-      @msg = "Yes, the low today in @location_city is #{@low_today}F and the low tomorrow is #{@low_tomorrow}F"
+      @msg = "Yes, the low today in #{@location_city} is #{@low_today}F and the low tomorrow is #{@low_tomorrow}F"
     else
-      @msg = "No, the low today in @location_city is #{@low_today}F and the low tomorrow is #{@low_tomorrow}F"
+      @msg = "No, the low today in #{@location_city} is #{@low_today}F and the low tomorrow is #{@low_tomorrow}F"
     end
     @twilio_client.account.sms.messages.create(:from => '+12106512991', :to => params['From'],:body => @msg)
   end
