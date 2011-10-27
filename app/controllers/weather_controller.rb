@@ -9,7 +9,7 @@ class WeatherController < ApplicationController
   def mobile
     @twilio_client = Twilio::REST::Client.new(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN)
     get_weather(params['Body'])
-    @msg = "Testing"
+    @msg = "#{@low_today}"
     @twilio_client.account.sms.messages.create(:from => '+12106512991', :to => params['From'],:body => @msg)
   end
 
