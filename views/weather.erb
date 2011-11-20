@@ -1,0 +1,27 @@
+<section>
+<div class="center">
+  <% if @hell %>
+    <%= @hell %><h1>
+  <% else %>
+    <div class="span16 answer">
+      <% if freezing?(@today_low_f) or freezing?(@tomorrow_low_f) %>
+        Yes
+      <% else %>
+        No
+      <% end %>
+    <br />
+    </div>
+    <div class="span16 today">today's low is</div><br />
+    <div class="span16 low"><%= @today_low_f %>&#176;F / <%= @today_low_c %>&#176;C</div><br />
+    <br /><div class="span16 today">tomorrow's low is</div>
+    <div class="span16 low"><%= @tomorrow_low_f %>&#176;F / <%= @tomorrow_low_c %>&#176;C</div><br />
+  <% end %>
+  <br />
+  <% if freezing?(@today_low_f) or freezing?(@tomorrow_low_f) %>
+    <a href="https://twitter.com/share" class="twitter-share-button" data-count="none" data-text="Yes, it will freeze tonight in <%= @location %> the low is <%= @today_low_f %>. <%= @site %>" data-count="vertical" data-related="JasonCarpentier:Creator of WillItFreezeTonight.com" data-url=none>Tweet</a><script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>
+  <% else %>
+    <a href="https://twitter.com/share" class="twitter-share-button" data-count="none" data-text="No, it won't freeze tonight in <%= @location %> the low is <%= @today_low_f %>. <%= @site %>" data-count="vertical" data-related="JasonCarpentier:Creator of WillItFreezeTonight.com" data-url=none>Tweet</a><script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>
+  <% end %>
+</div>
+<div class="span-16 go_home"><a href="/">Click here to see if it will freeze in another city</a></div><div class="clear"></div>
+</section>
