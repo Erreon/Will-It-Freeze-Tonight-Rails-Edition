@@ -6,6 +6,3 @@ tmp/
 backup
 *.*~
 .idea/
-config/initializers/sorcery.rb
-config/initializers/stripe.rb
-config/initializers/twilio.rb
