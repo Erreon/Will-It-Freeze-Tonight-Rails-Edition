@@ -5,6 +5,6 @@ tmp/
 .sass-cache/
 backup
 *.*~
-config/initializers/sorcery.rb
-config/initializers/stripe.rb
-config/initializers/twilio.rb
+sorcery.rb
+initializers/stripe.rb
+initializers/twilio.rb
